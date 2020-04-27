@@ -87,9 +87,9 @@ module DecoraShape( height, width, thickness, rounding,
 \**********************************************************************/
 module Decora( devicedimensions = dDecoraDimensions,
                dimensions       = CurrentDimensions(),
-               add              = $add,
-               subtract         = $subtract            ){
-    
+               add              = is_undef($add)?undef:$add,
+               subtract         = is_undef($subtract)?undef:$subtract ){
+
     echo(Decora = $device, mode(add,subtract));
 
     $add      = add;

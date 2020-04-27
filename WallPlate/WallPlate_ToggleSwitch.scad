@@ -47,9 +47,9 @@ function DevScrewSep(devicedimensions) = devicedimensions[2];
 \**********************************************************************/
 module ToggleSwitch( devicedimensions = dToggleSwitchDimensions,
                      dimensions       = CurrentDimensions() ,
-                     add              = $add,
-                     subtract         = $subtract                   ){
-    
+                     add              = is_undef($add)?undef:$add,
+                     subtract         = is_undef($subtract)?undef:$subtract ){
+
     echo(Switch = $device, add?"Add":"", subtract?"Subtract":"");
 
     $add      = add;

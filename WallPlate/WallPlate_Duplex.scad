@@ -79,9 +79,9 @@ module DuplexShape(thickness,
 \**********************************************************************/
 module Duplex( devicedimensions = dDuplexDimensions,
                dimensions       = CurrentDimensions(),
-               add              = $add,
-               subtract         = $subtract                   ){
-    
+               add              = is_undef($add)?undef:$add,
+               subtract         = is_undef($subtract)?undef:$subtract ){
+
     $add      = add;
     $subtract = subtract ;
 

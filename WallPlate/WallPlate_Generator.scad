@@ -31,7 +31,8 @@ function platewidth( gang = 1, margin, gangwidth,
       (ifundef(margin,DimMargin(dimensions))*2);
 
 /* Returns a string showing the Add/Subtract mode */
-function mode( add = $add, subtract = $subtract ) =
+function mode( add      = is_undef($add)?undef:$add,
+               subtract = is_undef($subtract)?undef:$subtract) =
     str(add?"Add":"", (add&&subtract)?"/":"",subtract?"Subtract":"");
 
 
@@ -176,15 +177,15 @@ module BlankPlate( gang = 1,
                the outer body was drawn.                              */
             if((add == true)&&(0<rthickness)&&(rthickness<rdepth))
                 translate([rthickness,rthickness,-overlap])
-                BlankPlate(width          = (rwidth-(rthickness*2)),
-                           height         = (rheight-(rthickness*2)),
-                           depth          = (rdepth-rthickness+overlap),
-                           roundingradius = roundingradius *
-                                              ((rdepth-rthickness)/rdepth),
-                           thickness      = 0, // Don't hollow out the hollow
-                           colors         = ifundef(colors[2],["green","red"]),
-                           center         = false,
-                           add = true, subtract = true                       );
+                BlankPlate(width     = (rwidth-(rthickness*2)),
+                           height    = (rheight-(rthickness*2)),
+                           depth     = (rdepth-rthickness+overlap),
+                           rounding  = rounding *
+                                         ((rdepth-rthickness)/rdepth),
+                           thickness = 0, // Don't hollow out the hollow
+                           colors    = ifundef(colors[2],["green","red"]),
+                           center    = false,
+                           add = true, subtract = true                    );
             
             /* Call to make the bevel form.  If add is true, this will
                be subtracted from the body by the difference().  If
@@ -302,9 +303,8 @@ module EdgeRounder( length, roundingradius, skew,
             rotate([0, 90, 0])
             color("orange") cylinder(r      = rroundingradius,
                                      h      = rlength+(overlap*4),
-                                     center = false,
                                      $fn    = smooth,
-                                     center = true               );
+                                     center = true                );
     }
 }
 

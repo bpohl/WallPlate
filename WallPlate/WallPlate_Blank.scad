@@ -38,10 +38,10 @@ function DevScrewSep(devicedimensions) = devicedimensions[0];
 \**********************************************************************/
 module Blank( devicedimensions = dBlankDimensions,
               dimensions       = CurrentDimensions(),
-              add              = $add,
-              subtract         = $subtract            ){
+              add              = is_undef($add)?undef:$add,
+              subtract         = is_undef($subtract)?undef:$subtract ){
     
-    echo(Blank = $device, mode(add,subtract));
+    echo(Blank = is_undef($device)?0:$device, mode(add,subtract));
 
     $add      = add;
     $subtract = subtract;

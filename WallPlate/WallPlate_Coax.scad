@@ -95,8 +95,8 @@ module Coax( devices          = 2,
              scalar,
              devicedimensions = dCoaxDimensions,
              dimensions       = CurrentDimensions(),
-             add              = $add,
-             subtract         = $subtract            ){
+             add              = is_undef($add)?undef:$add,
+             subtract         = is_undef($subtract)?undef:$subtract ){
     
     echo(Coax = $device, mode(add,subtract));
 

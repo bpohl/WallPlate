@@ -71,9 +71,10 @@ module PushbuttonShape(thickness,
 \**********************************************************************/
 module PushbuttonSwitch( devicedimensions = dPushbuttonSwitchDimensions,
                          dimensions       = CurrentDimensions(),
-                         add              = $add,
-                         subtract         = $subtract                    ){
-    
+                         add              = is_undef($add)?undef:$add,
+                         subtract         = is_undef($subtract)?undef
+                                                               :$subtract ){
+
     echo(Pushbutton = $device, add?"Add":"", subtract?"Subtract":"");
 
     $add      = add;

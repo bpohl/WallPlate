@@ -95,7 +95,9 @@ function DefaultJumboDimensions()    = dJumboDimensions;
 function DefaultScrewHole6_32()      = dScrewHole6_32;
 
 /* Return the Standard Dimensions if global $dimensions is not set. */
-function CurrentDimensions() = ifundef($dimensions,dStandardDimensions);
+//function CurrentDimensions() = ifundef($dimensions,dStandardDimensions);
+function CurrentDimensions() = is_undef($dimensions) ? dStandardDimensions 
+                                                     : $dimensions;
 
 /* Getters for Dimension Vector */
 function DimHeight(dimensions)       = dimensions[0];

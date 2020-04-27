@@ -99,9 +99,9 @@ module Despard( devices          = 2,
                 scalar,
                 devicedimensions = dDespardDimensions,
                 dimensions       = CurrentDimensions(),
-                add              = $add,
-                subtract         = $subtract                   ){
-    
+                add              = is_undef($add)?undef:$add,
+                subtract         = is_undef($subtract)?undef:$subtract ){
+
     echo(Despard = $device, mode(add,subtract));
 
     $add      = add;
