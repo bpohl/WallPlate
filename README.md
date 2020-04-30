@@ -90,22 +90,17 @@ Most of the other modules in this library need to have `dimensions` defined eith
 
 This repository includes the file `WallPlate_Examples.scad` which has several examples of using different modules.  Comment and un-comment out the sections or cut-n-paste them onto the OpenSCAD editor. 
 
-## Libraries and their modules
+## [Libraries and their modules](https://github.com/bpohl/WallPlate/wiki/Libraries-and-their-modules)
 
-See [Libraries and their modules](https://github.com/bpohl/WallPlate/wiki/Libraries-and-their-modules) on the wiki.
+## Plate dimensions, standard and otherwise
 
+## Included device modules
 
-
-
-
-
-
-
-
+## Defining new devices
 
 ## <a id="Known Bugs"></a>Known Bugs
 
-* Even
+* Documentation needs to be finished.
 
 ## Version
 
