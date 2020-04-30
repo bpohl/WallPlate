@@ -90,124 +90,17 @@ Most of the other modules in this library need to have `dimensions` defined eith
 
 This repository includes the file `WallPlate_Examples.scad` which has several examples of using different modules.  Comment and un-comment out the sections or cut-n-paste them onto the OpenSCAD editor. 
 
-## Libraries and their modules
+## [Libraries and their modules](https://github.com/bpohl/WallPlate/wiki/Libraries-and-their-modules)
 
-Default values
+## Plate dimensions, standard and otherwise
 
+## Included device modules
 
-
-### `WallPlate_Generator.scad`
-
-* **Utility functions**
-
-	* `mm( inch =` *float* `)`
-
-		OpenSCAD is unitless, but 3D printing slicers (to my experience) considers a single unit to be a millimeters.  In general, length measurements passed to functions and modules are millimeters.  On the other hand, electrical plates, boxes, devices, etc. were defined in the bygone era of English measurement, so this function just does the conversion.
-	
-	* `top( depth =` *float*`, thickness =` *float* `)`
-
-		Amount to raise (lower) an object of known thickness to be flush with plate of know depth.
-
-	* `ifundef( value, default )`
-
-		Return a default if undef. (Oft repeated pattern.)
-
-	* `platewidth( gang =` *int*`, margin =` *float*`, gangwidth =` *float*`, dimensions =` *DimVector* `)`
-
-		Calculate overall width of plate given gang count and plate type.
-
-	* `mode( add =` *bool*`, subtract =` *bool* `)`
-
-		Returns a string showing the Add/Subtract mode.  For logging.
-
-* **Modules**
-
-	* `WallPlate( dimensions =` *DimVector* `)`
-
-		Generate a Wall Plate with the Devices listed as children.  The `dimensions` vector needs to be in the prescribed form but can be defined and passed to the module which will pass it on to the Device modules for their use.
-
-		Usage:
-		
-				WallPlate(){
-					Decora();
-					Duplex();
-					Duplex();
-				}
-
-	* `BlankPlate(` *params* `)`
-
-		Generate a rounded, hollowed plate shape of arbitrary size
-
-			gang          (pos int)       - Set horizontal size based on number of gang boxes
-			width         (pos float)     - Horizontal size of plate
-			height        (pos float)     - Vertical size of plate
-			depth         (pos float)     - Overall distance from front face to wall
-			thickness     (pos float)     - Distance between the outer face and inner hollow,
-			                                0 to not create a hollow
-			rounding      (pos float)     - Factor controlling the radius of the cylindrical
-			                                arch based on depth
-			skew          (pos float)     - Makes the cylinder more eccentric to shape 
-			                                the rounding, 1 is a circular cross section
-			dimensions    (vect[x])       - Vector describing the plate dimensions to use, 
-			                                [height, margin, depth, etc.]
-			colors        (vect[2] color) - Two color values to help distinguish surfaces 
-			                                in preview
-			add/subtract  (bool)          - Add/Subtract mode flags for debugging
-
-		Supplying width, height, depth, etc. overrides the values derived from dimensions/gang.
-
-	* `PlateRounder(` *params* `)`
-
-		Place an EdgeRounder on all four edges of a plate.
-		
-			width         (pos float)     - Horizontal size of plate
-			height        (pos float)     - Vertical size of plate
-			depth         (pos float)     - Overall distance from front face to wall
-			thickness     (pos float)     - Distance between the outer face and inner hollow,
-			                                0 to not create a hollow
-			rounding      (pos float)     - Factor controlling the radius of the cylindrical
-			                                arch based on depth
-			skew          (pos float)     - Makes the cylinder more eccentric to shape 
-			                                the rounding, 1 is a circular cross section
-			dimensions    (vect[x])       - Vector describing the plate dimensions to use, 
-			                                [height, margin, depth, etc.]
-
-	* `EdgeRounder(` *params* `)`
-
-		Generate a shape that can be subtracted from the plate body to create a rounded edge bevel.
-
-			length          (pos float)   - The length of the edge to round. Required
-			roundingradius  (pos float)   - Radius of the cylindrical arch
-			skew            (pos float)   - Makes the cylinder more eccentric to shape the 
-			                                rounding, 1 is a circular cross section,
-			dimensions      (vect[x])     - Vector describing the plate dimensions to use, 
-			                                [height, margin, depth, etc.]
-
-	* `ReRound( dimensions =` *DimVector* `)`
-
-		Re-round the top and bottom edge of the plate if something has extended beyond it.
-	
-		Preface the device for the gang needing the rounding.
-
-			ReRound() Decora();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Defining new devices
 
 ## <a id="Known Bugs"></a>Known Bugs
 
-* Even
+* Documentation needs to be finished.
 
 ## Version
 
